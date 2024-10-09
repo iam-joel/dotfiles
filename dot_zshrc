@@ -67,27 +67,13 @@ alias gl='git log --oneline --graph --decorate'
 # Initialize Starship Prompt
 eval "$(starship init zsh)"
 
-# Neovim Configuration
 # Custom Neovim installation for work system (due to permission issues)
-# export XDG_CONFIG_HOME="$HOME/Documents"
-# export XDG_DATA_HOME="$HOME/Documents/.local/share"
-# export XDG_CACHE_HOME="$HOME/Documents/.cache"
-
-# Check the operating system
-if [[ "$(uname)" == "Darwin" ]]; then
-    # This is macOS
-    if [[ "$HOST" == "your-work-hostname" ]]; then
-        # Set custom Neovim paths for work macOS
-        export XDG_CONFIG_HOME="$HOME/Documents"
-        export XDG_DATA_HOME="$HOME/Documents/.local/share"
-        export XDG_CACHE_HOME="$HOME/Documents/.cache"
-    fi
+# Check if the environment variable IS_WORK_MAC is set
+if [[ "$IS_WORK_MAC" == "true" ]]; then
+  export XDG_CONFIG_HOME="$HOME/Documents"
+  export XDG_DATA_HOME="$HOME/Documents/.local/share"
+  export XDG_CACHE_HOME="$HOME/Documents/.cache"
 fi
-
-# Default Neovim paths for personal macOS and WSL
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
 # Performance Optimization for Completion
 zstyle ':completion:*' accept-exact '*(N)'
