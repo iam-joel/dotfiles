@@ -24,6 +24,11 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 # Source Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
+# Source local specific stuff
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
+
 # Default Editor
 export EDITOR='nvim'
 
