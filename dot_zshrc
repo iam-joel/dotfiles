@@ -75,9 +75,9 @@ eval "$(starship init zsh)"
 # Custom Neovim installation for work system (due to permission issues)
 # Check if the environment variable IS_WORK_MAC is set
 if [[ "$IS_WORK_MAC" == "true" ]]; then
-  export XDG_CONFIG_HOME="$HOME/.config"
-  export XDG_DATA_HOME="$HOME/.config/.local/share"
-  export XDG_CACHE_HOME="$HOME/.config/.cache"
+  export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+  export XDG_DATA_HOME="${XDG_DATA_HOME:-$XDG_CONFIG_HOME/share}"
+  export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$XDG_CONFIG_HOME/cache}"
 fi
 
 # Performance Optimization for Completion
